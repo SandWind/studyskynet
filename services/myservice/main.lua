@@ -1,0 +1,25 @@
+local skynet =require'skynet'
+local os = require "os"
+require"dump"
+
+skynet.start(function( ... )
+	 local param ={}
+	 -- print(type(SERVICE_NAME))
+	 -- if type(SERVICE_NAME) =="string "then
+	 --  	print('SERVICE_NAME: '..SERVICE_NAME)
+	 -- end
+	 dump(SERVICE_NAME,"SERVICE_NAME")
+	  
+	 param.s1 = '学习传入参数'
+	 param.s2 = 2021
+	 param.mywork = 'new world'
+	 local myparam = {}
+	 myparam.time = os.time()
+	 myparam.title = "传入时间戳"
+	 local watchdog = skynet.newservice("myservice","start",10,20,30,40,50,60,70,80)
+	 local params = ",,,,,"..skynet.getenv("svr_id") 
+	 dump(params,"参数")
+	 skynet.call(watchdog,'lua',"start",myparam)
+	 skynet.send(watchdog,'lua',"work",params)
+	 skynet.exit()
+end)

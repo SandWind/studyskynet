@@ -1,9 +1,11 @@
-
+-- root ='/mnt/share/studyskynet/common/skynet'
+root ='../common/skynet/'
+service_dir = '../'
 thread    = 2
 bootstrap = "snlua bootstrap"
-cpath     = "skynet/cservice/?.so;luaclib/?.so;"
-lualoader  = "skynet/lualib/loader.lua"
-preload    = "preload/preload.lua"
+cpath     = root.."cservice/?.so;"..root.."luaclib/?.so;"
+lualoader  = root.."lualib/loader.lua"
+-- preload    = root.."examples/preload.lua"
 
 -- logservice = "snlua"
 -- logger = "syslog"
@@ -17,31 +19,25 @@ local function concat(args)
   return r
 end
 
+lua_cpath  = concat {
+  root.."luaclib/?.so",
+}
+
 
 luaservice = concat {
-  "skynet/service/?.lua",
-
-  "service/?.lua",
-  "service/?/?.lua",
-
-  -- "service/login/?.lua",
-  -- "service/center/?.lua",
-  -- "service/game/?.lua",
-  -- "service/common/?.lua",
-  -- "service/agent/?.lua",
-  -- "service/battle/?.lua",
+  root.."service/?.lua",
+  service_dir.."common/service/?.lua",
+  service_dir.."services/myservice/?.lua",
+  
 }
 
 lua_path = concat {
-  "skynet/lualib/?.lua",
+   root.."lualib/?.lua",
+   root.."lualib/http/?.lua",
+   root.."lualib/skynet/?.lua",
 
-  "preload/?.lua",
-  "common/?.lua",
-  "lualib/?.lua",
-
-  "services/?/?.lua",
-  
-  
+   service_dir.."common/core/?.lua"
+   
   -- "service/login/?.lua",
   -- "service/center/?.lua",
   -- "service/game/?.lua",
@@ -50,9 +46,6 @@ lua_path = concat {
   -- "service/battle/?.lua",
 }
 
-lua_cpath  = concat {
-  "skynet/luaclib/?.so",
-  "luaclib/?.so",
-}
+
 
 cluster    = "common/clustername.lua"

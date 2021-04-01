@@ -1,0 +1,9 @@
+include"config.pub"
+log = "./log/myserive/myservice.log"
+harbor    = 0
+logger = "systemlog"
+logpath = "./log/myservice/myserive.log"
+daemon    = './sh/myservice.pid'
+start = "main"
+svr_id = ".myservice"
+
