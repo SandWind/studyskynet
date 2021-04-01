@@ -16,6 +16,7 @@ skynet.start(function( ... )
 	 local myparam = {}
 	 myparam.time = os.time()
 	 myparam.title = "传入时间戳"
+	 -- 传入参数不能是table,而是其他基本参数（string,number）
 	 local watchdog = skynet.newservice("myservice","start",10,20,30,40,50,60,70,80)
 	 local params = ",,,,,"..skynet.getenv("svr_id") 
 	 dump(params,"参数")

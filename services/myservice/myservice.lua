@@ -3,7 +3,7 @@ require 'dump'
 local param1,param2,param3,param4,param5,param6 = ...
 local CMD = {}
 if type(param1) == 'string' then
-   print("==========",param1)
+   print("==========",param1,param2,param3,param4,param5,param6)
 end 
 function CMD.work( workparam )
 	dump(workparam,"传入work的参数")

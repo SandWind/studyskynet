@@ -15,10 +15,11 @@ TMP=$PATH
 PATH=$TMP
 CUR_PATH=$(dirname $(readlink -f $0))
 WORK_PATH=$(dirname $CUR_PATH)
-echo "当前目录"$CUR_PATH
-echo "工作目录"$WORK_PATH
-PID_FILE=$CUR_PATH"/myservice.pid"
-
+# echo "当前目录"$CUR_PATH
+# echo "工作目录"$WORK_PATH
+PID_DIR="/var/run/skynet"
+PID_FILE=$PID_DIR"/myservice.pid"
+# echo $PID_FILE
 if [ -z "$3" ]; then
   CONFIG=$CUR_PATH/config.myservice
 else
@@ -65,7 +66,7 @@ function start
 function stop
 {
   if [ ! -f $PID_FILE ] ;then
-    echo "not found pid file have no loginserver"
+    echo "not found pid file have no myservice"
     exit 0
   fi
 
@@ -76,7 +77,7 @@ function stop
     exit 0
   else
     echo -n $"$pid myservice will killed"
-    killproc -p $PID_FILE
+    kill -s QUIT $pid 
     echo
   fi
 }
