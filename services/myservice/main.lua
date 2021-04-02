@@ -1,5 +1,7 @@
 local skynet =require'skynet'
 local os = require "os"
+local cluster = require'skynet.cluster'
+require "skynet.manager"
 require"dump"
 
 skynet.start(function( ... )
@@ -18,9 +20,14 @@ skynet.start(function( ... )
 	 myparam.title = "传入时间戳"
 	 -- 传入参数不能是table,而是其他基本参数（string,number）
 	 local watchdog = skynet.newservice("myservice","start",10,20,30,40,50,60,70,80)
-	 local params = ",,,,,"..skynet.getenv("svr_id") 
+	 -- local watchdog = skynet.uniqueservice("myservice","start",10,20,30,40,50,60,70,80)
+	 local params = ",,,,,"..skynet.getenv("svr_name") 
 	 dump(params,"参数")
+	 dump(watchdog,"服务========")
 	 skynet.call(watchdog,'lua',"start",myparam)
 	 skynet.send(watchdog,'lua',"work",params)
+	 cluster.register("myservice", watchdog)
+
 	 skynet.exit()
+
 end)

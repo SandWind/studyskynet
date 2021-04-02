@@ -5,11 +5,10 @@ thread    = 2
 bootstrap = "snlua bootstrap"
 cpath     = root.."cservice/?.so;"..root.."luaclib/?.so;"
 lualoader  = root.."lualib/loader.lua"
--- preload    = root.."examples/preload.lua"
+preload    = root.."examples/preload.lua"
 
 -- logservice = "snlua"
 -- logger = "syslog"
-
 
 local function concat(args)
   local r = ''
@@ -28,6 +27,7 @@ luaservice = concat {
   root.."service/?.lua",
   service_dir.."common/service/?.lua",
   service_dir.."services/myservice/?.lua",
+  service_dir.."services/testservice/?.lua",
   
 }
 
@@ -48,4 +48,4 @@ lua_path = concat {
 
 
 
-cluster    = "common/clustername.lua"
+cluster    = service_dir.."common/clustername.lua"

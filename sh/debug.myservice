@@ -1,13 +1,9 @@
 include"config.pub"
 log = "./log/myserive/myservice.log"
 harbor    = 0
-logger = "systemlog"
+logger = "nil"
 logger = nil
 logpath = "./log/myservice/myserive.log"
 -- daemon    = '/var/run/skynet/myservice.pid'
-
-master="192.168.29.174:2090"
-address = "192.168.29.174:3090"
-standalone = nil
 start = "main"
-svr_name = "myservice"
+svr_name = ".myservice"

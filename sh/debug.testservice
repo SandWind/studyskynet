@@ -1,0 +1,9 @@
+include"config.pub"
+log = "./log/testservice/myservice.log"
+harbor    = 0
+logger = "systemlog"
+logger = nil
+logpath = "./log/testservice/testservice.log"
+-- daemon    = '/var/run/skynet/myservice.pid'
+start = "testservice"
+svr_name = "testservice"
