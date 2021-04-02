@@ -47,7 +47,7 @@ function CMD.getMult( ... )
 		result.multi = result.multi * v
 	end
 	result.status = 'ok'
-	print("==============返回数据")
+	dump(result)
 	return result
 end
 
@@ -60,5 +60,4 @@ end)
 
 skynet.start(function( ... )
 	  serviceName()
-	  cluster.open(2090) 
 end)
