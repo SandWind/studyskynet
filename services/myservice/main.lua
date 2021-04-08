@@ -27,7 +27,7 @@ skynet.start(function( ... )
 	 skynet.call(watchdog,'lua',"start",myparam)
 	 skynet.send(watchdog,'lua',"work",params)
 	 cluster.register("myservice", watchdog)
-
+	 cluster.open(2090)
 	 skynet.exit()
 
 end)

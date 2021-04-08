@@ -1,0 +1,9 @@
+include"config.pub"
+log = "./log/echo/myservice.log"
+harbor    = 0
+logger = "nil"
+logger = nil
+logpath = "./log/myservice/echo.log"
+-- daemon    = '/var/run/skynet/echo.pid'
+start = "testecho"
+svr_name = ".echo"

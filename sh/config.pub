@@ -28,7 +28,7 @@ luaservice = concat {
   service_dir.."common/service/?.lua",
   service_dir.."services/myservice/?.lua",
   service_dir.."services/testservice/?.lua",
-  
+  --service_dir..'services/tcpsocket/?.lua',
 }
 
 lua_path = concat {
@@ -45,6 +45,8 @@ lua_path = concat {
   -- "service/agent/?.lua",
   -- "service/battle/?.lua",
 }
+
+
 
 
 

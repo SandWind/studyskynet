@@ -1,0 +1,11 @@
+include"config.pub"
+log = "./log/kick/kick.log"
+harbor    = 0
+logger = "nil"
+logger = nil
+logpath = "./log/kick/kick.log"
+-- daemon    = '/var/run/skynet/kick.pid'
+
+luaservice = luaservice..';'..service_dir..'services/kick/?.lua'
+start = "kick_main"
+svr_name = ".kick"

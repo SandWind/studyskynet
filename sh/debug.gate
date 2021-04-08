@@ -1,0 +1,11 @@
+include"config.pub"
+log = "./log/gate/gate.log"
+harbor    = 0
+logger = "nil"
+logger = nil
+logpath = "./log/gate/gate.log"
+-- daemon    = '/var/run/skynet/gate.pid'
+
+luaservice = luaservice..';'..service_dir..'services/gate/?.lua'
+start = "gate_main"
+svr_name = ".gate"
