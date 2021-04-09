@@ -1,0 +1,25 @@
+syntax = "proto3";
+package mycell.moblie;
+
+
+message App{
+	string name   = 1;
+	string sysdep = 2;
+	int64 version = 3;
+	string descr  = 4;
+}
+
+message moblie{
+	string name       = 1;
+	Brand  model      = 2;
+	string systemName = 3;
+	repeated App apps = 4;
+}
+enum Brand{
+	unknown = 0;
+	huawei  = 1;
+	xiaomi  = 2;
+	oppo    = 3;
+	vivo    = 4;
+	apple   = 5;
+}

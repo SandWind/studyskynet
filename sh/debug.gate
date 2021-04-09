@@ -7,5 +7,6 @@ logpath = "./log/gate/gate.log"
 -- daemon    = '/var/run/skynet/gate.pid'
 
 luaservice = luaservice..';'..service_dir..'services/gate/?.lua'
+protopath = service_dir..'proto/'
 start = "gate_main"
 svr_name = ".gate"

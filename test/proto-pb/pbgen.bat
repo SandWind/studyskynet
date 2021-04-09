@@ -1,0 +1,1 @@
+protoc --cpp_out=cpp --python_out=python  *.proto

@@ -1,0 +1,7 @@
+syntax = "proto3";
+message App{
+	string name   = 1;
+	string sysdep = 2;
+	int64 version = 3;
+	string descr  = 4;
+}

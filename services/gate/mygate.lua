@@ -3,11 +3,19 @@ local gateserver = require "snax.gateserver"
 local netpack = require"skynet.netpack"
 local socketdriver = require "skynet.socketdriver"
 require "skynet.manager"
+local proto = require "protoc"
+local pb = require"pb"
+-- local lfs = require"lfs"
 local  handler = {}
 local CMD = {}
 require"dump"
 
+local proto_path_result =skynet.getenv("protopath").."result.proto"
+local proto_path_mobile =skynet.getenv("protopath").."moblie.proto"
 
+prbf = proto.new()
+
+prbf:loadfile(proto_path_mobile)
 function handler.connect( fd,ipaddr )
 	skynet.error("ipaddr: "..ipaddr,type(fd),"fd: "..fd,"connect")
 	gateserver.openclient(fd)
@@ -22,11 +30,22 @@ end
 function handler.message( fd,msg,sz)
 	skynet.error("rev message fom fd: "..fd)
 	local cmdstr = netpack.tostring(msg,sz)
-	cmdstr = string.gsub(cmdstr, "\r", "")
-	cmdstr = string.gsub(cmdstr, "\n", "")
-	dump(cmdstr)
-	skynet.error("message",cmdstr)
-	socketdriver.send(fd,"OK")
+	-- cmdstr = string.gsub(cmdstr, "\r", "")
+	-- cmdstr = string.gsub(cmdstr, "\n", "")
+	-- dump(cmdstr)
+	-- skynet.error("message",cmdstr)
+	cmdstr = string.sub(cmdstr,3,-1)
+	-- print(cmdstr)
+	-- local mobile =  pb.decode("mycell.moblie.moblie",cmdstr)
+	-- dump(moblie)
+	prbf:loadfile(proto_path_result)
+	local ret = {
+		status = 1,
+		desc = '已收到数据包'
+	}
+	ret = pb.encode("Result",ret)
+	-- local ret = "ok"
+	socketdriver.send(fd,ret)
 	--socket.write(fd,"OK")
 	-- skynet.call("gated111","lua","kick",fd)
 	-- print(type(skynet.self()),skynet.self())
